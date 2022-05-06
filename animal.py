@@ -56,7 +56,7 @@ class Animal:
         return self.__nom_animal
     def set_nom_animal(self, p_nom):
         """
-        Mutateur de l'attribur privé __nom_animal
+        Mutateur de l'attribut privé __nom_animal
         """
         if len(p_nom) <= 25 and p_nom.isalpha():
             self.__nom_animal = p_nom

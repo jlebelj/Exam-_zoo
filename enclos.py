@@ -31,7 +31,7 @@ class Enclos:
         return self.__num_enclos
     def set_num_enclos(self, p_num):
         """
-        Mutateur de l'attribur privé __nom_animal
+        Mutateur de l'attribut privé __nom_animal
         """
         if p_num.isnumeric() and len(p_num) == 4:
             self.__num_enclos = p_num

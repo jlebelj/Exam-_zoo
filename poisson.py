@@ -33,8 +33,14 @@ class Poisson(Animal):
     ##################################################
 
     def get_longueur(self):
+        """
+        Accesseur de l'attribut privé  __longueur
+        """
         return self.__longueur
     def set_longueur(self, p_longueur):
+        """
+        Mutateur de l'attribut privé __longueur
+        """
         if p_longueur.isnumeric() and p_longueur > 0:
             self.__longueur = p_longueur
 
@@ -68,7 +74,6 @@ class Poisson(Animal):
         ::param p_fichier : Le nom du fichier qui contiendra l'objet sérialisé
         :: return : retourne 0 si le fichier est ouvert et les informations y sont écrites,
         1 s'il y a erreur d'écriture et 2 s'il y a erreur d'ouverture
-
         """
 
         try:
