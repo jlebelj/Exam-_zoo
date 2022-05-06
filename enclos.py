@@ -30,11 +30,28 @@ class Enclos:
         """
         return self.__num_enclos
     def set_num_enclos(self, p_num):
+        """
+        Mutateur de l'attribur privé __nom_animal
+        """
         if p_num.isnumeric() and len(p_num) == 4:
             self.__num_enclos = p_num
     Num_enclos = property(get_num_enclos, set_num_enclos)
 
 
+    #####  MÉTHODES SPÉCIALES OU MAGIQUES  #####
+    ############################################
+    def __str__(self) :
+        """
+                Méthode spéciale d'affichage. À utiliser avec print(objet)
+                :return: Chaine à afficher
+        """
+        output = ("*************************\n")
+        output += (f"Numero de l'enclos: {self.__num_enclos}\n")
+        output += (f"Type de l'enclos: {self.Type_enclos}\n")
+        output += (f"Emplacement de l'enclos: {self.Emplacement}\n")
+        output += (f"Animal/Animaux dans cet enclos: {self.lst_animal}\n")
+        output += ("*************************\n")
+        return output
 
 
 

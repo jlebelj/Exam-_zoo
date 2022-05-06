@@ -5,5 +5,6 @@
     <orderEntry type="jdk" jdkName="Python 3.10" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="QT_demo1" />
+    <orderEntry type="module" module-name="python_session2" />
   </component>
 </module>

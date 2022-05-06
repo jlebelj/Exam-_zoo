@@ -72,10 +72,10 @@ class Animal:
                 :return: Chaine à afficher
         """
         output = ("*************************\n")
-        output += (f"Nom: {self.__nom_animal}\n")
-        output += (f"Numero: {self.__num_animal}\n")
+        output += (f"Nom de l'animal: {self.__nom_animal}\n")
+        output += (f"Numero de l'animal: {self.__num_animal}\n")
         output += (f"Prenom: {self.Type_animal}\n")
-        output += (f"Date de naissance: {self.Type_alimentation}\n")
+        output += (f"Type d'alimentation: {self.Type_alimentation}\n")
         output += (f"Numero de l'enclos: {self.enclos.__str__()}\n")
         output += ("*************************\n")
         return output
