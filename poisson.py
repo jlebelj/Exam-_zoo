@@ -70,16 +70,15 @@ class Poisson(Animal):
 
     def serialiser(self, p_fichier):
         """
-        Méthode permttant de sérialiser un objet de la classe Etudiant
+        Méthode permttant de sérialiser un objet de la classe Reptile
         ::param p_fichier : Le nom du fichier qui contiendra l'objet sérialisé
         :: return : retourne 0 si le fichier est ouvert et les informations y sont écrites,
         1 s'il y a erreur d'écriture et 2 s'il y a erreur d'ouverture
         """
-
         try:
             with open(p_fichier, "w") as fichier:
                 try:
-                    #json.dump(self.__dict__, fichier)
+                    # json.dump(self.__dict__, fichier)
                     json.dump(self.__dict__, fichier)
                     return 0
                 except:
@@ -87,9 +86,20 @@ class Poisson(Animal):
         except:
             return 2
 
-
-
-
+    def deserialiser(self, p_fichier):
+        """
+            Méthode permttant de désérialiser un objet de la classe Reptile
+            ::param p_fichier : Le nom du fichier qui contient l'objet sérialisé
+                """
+        try:
+            with open(p_fichier, "r") as fichier:
+                try:
+                    self.__dict__ = json.load(fichier)
+                    return 0
+                except:
+                    return 1
+        except:
+            return 2
 
 
 
