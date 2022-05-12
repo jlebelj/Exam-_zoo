@@ -1,0 +1,1 @@
+{"_Animal__num_animal": "A1111", "_Animal__nom_animal": "gecko", "Type_alimentation": "Omnivore", "Type_animal": "reptile", "enclos": {"Type_enclos": "Terrarium", "Emplacement": "sous_sol", "_Enclos__num_enclos": "1234", "lst_animal": []}, "_Reptile__nb_dent": "10", "_Reptile__temperature_moyenne": 35, "Venimeux": false}
