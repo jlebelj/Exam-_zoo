@@ -25,7 +25,7 @@ class Poisson(Animal):
     ###################################
     def __init__(self, p_num_animal = "", p_nom_animal = "", p_Type_alimentation = "", p_Type_animal = "",
                 p_enclos = Enclos(), p_longueur = "", p_Type_eau = ""):
-        Animal.__init__(self, p_num_animal, p_nom_animal, p_Type_alimentation, p_Type_animal, p_enclos = Enclos())
+        Animal.__init__(self, p_num_animal, p_nom_animal, p_Type_alimentation, p_Type_animal, p_enclos)
         self.__longueur = p_longueur
         self.Type_eau = p_Type_eau
 
@@ -53,15 +53,13 @@ class Poisson(Animal):
                 Méthode spéciale d'affichage. À utiliser avec print(objet)
                 :return: Chaine à afficher
         """
-        output = ("*************************\n")
-        output += (f"Nom de l'animal: {self.__nom_animal}\n")
-        output += (f"Numero de l'animal: {self.__num_animal}\n")
+        output = (f"Nom de l'animal: {self.Nom_animal}\n")
+        output += (f"Numero de l'animal: {self.Num_animal}\n")
         output += (f"Prenom: {self.Type_animal}\n")
         output += (f"Type d'alimentation: {self.Type_alimentation}\n")
-        output += (f"Numero de l'enclos: {self.enclos.__str__()}\n")
+        output += (f"{self.enclos.__str__()}\n")
         output += (f"Longueur du poisson: {self.__longueur}\n")
-        output += (f"Type d'eau: {self.Type_eau}\n")
-        output += ("*************************\n")
+        output += (f"Type d'eau: {self.Type_eau}")
         return output
 
 
@@ -77,6 +75,7 @@ class Poisson(Animal):
         """
         try:
             with open(p_fichier, "w") as fichier:
+                self.__dict__["enclos"] = self.enclos.__dict__
                 try:
                     # json.dump(self.__dict__, fichier)
                     json.dump(self.__dict__, fichier)
@@ -95,22 +94,31 @@ class Poisson(Animal):
             with open(p_fichier, "r") as fichier:
                 try:
                     self.__dict__ = json.load(fichier)
-                    return 0
+                    # print(self.enclos.__dict__) #= {'Type_enclos': '', 'Emplacement': '', '_Enclos__num_enclos': '', 'lst_animal': []}\
+                    #print(self.__dict__["enclos"]) #= {'Type_enclos': 'Terrarium', 'Emplacement': 'sous_sol', '_Enclos__num_enclos': '1234', 'lst_animal': []}
+                    # self.__dict__["enclos"] = "a"
+                    #print(self.enclos["_Enclos__num_enclos"]) #= 1234
+                    # faire for loop parcourant liste enclos reperant lobjet enclos associer au num
+
                 except:
-                    return 1
+                    print("1")
         except:
-            return 2
+            print("2")
+
+
+A1 = Enclos("Terrarium", "sous_sol", "1234")
+q1 = Poisson("A1234", "gecko", "Omnivore", "reptile", A1, "10", "sale")
 
 
 
+#q1.serialiser("test2")
 
 
 
+l2 = Poisson()
 
-
-
-
-
+l2.deserialiser("test2")
+#print(l2)
 
 
 

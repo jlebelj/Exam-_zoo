@@ -25,7 +25,7 @@ class Reptile(Animal):
     ###################################
     def __init__(self, p_num_animal = "", p_nom_animal = "", p_Type_alimentation = "", p_Type_animal = "",
                 p_enclos = Enclos(), p_nb_dent = "", p_temperature_moyenne = 0, p_Venimeux = False):
-        Animal.__init__(self, p_num_animal, p_nom_animal, p_Type_alimentation, p_Type_animal, p_enclos = Enclos())
+        Animal.__init__(self, p_num_animal, p_nom_animal, p_Type_alimentation, p_Type_animal, p_enclos)
         self.__nb_dent = p_nb_dent
         self.__temperature_moyenne = p_temperature_moyenne
         self.Venimeux = p_Venimeux
@@ -65,16 +65,14 @@ class Reptile(Animal):
                 Méthode spéciale d'affichage. À utiliser avec print(objet)
                 :return: Chaine à afficher
         """
-        output = ("*************************\n")
-        output += (f"Nom de l'animal: {self.__nom_animal}\n")
-        output += (f"Numero de l'animal: {self.__num_animal}\n")
-        output += (f"Prenom: {self.Type_animal}\n")
+        output = (f"Nom de l'animal: {self.Nom_animal}\n")
+        output += (f"Numero de l'animal: {self.Num_animal}\n")
+        output += (f"Type d'animal: {self.Type_animal}\n")
         output += (f"Type d'alimentation: {self.Type_alimentation}\n")
-        output += (f"Numero de l'enclos: {self.enclos.__str__()}\n")
+        output += (f"{self.enclos.__str__()}\n")
         output += (f"Nombre de dents: {self.__nb_dent}\n")
         output += (f"emperature moyenne corporelle: {self.__temperature_moyenne}\n")
         output += (f"Reptile venimeux?: {self.Venimeux}\n")
-        output += ("*************************\n")
         return output
 
     #####          Autres MÉTHODES         #####
@@ -90,8 +88,8 @@ class Reptile(Animal):
         """
         try:
             with open(p_fichier, "w") as fichier:
+                self.__dict__["enclos"] = self.enclos.__dict__
                 try:
-                    #json.dump(self.__dict__, fichier)
                     json.dump(self.__dict__, fichier)
                     return 0
                 except:
@@ -104,6 +102,7 @@ class Reptile(Animal):
             Méthode permttant de désérialiser un objet de la classe Reptile
             ::param p_fichier : Le nom du fichier qui contient l'objet sérialisé
                 """
+
         try:
             with open(p_fichier , "r") as fichier :
                 try:
@@ -114,11 +113,22 @@ class Reptile(Animal):
         except:
             return 2
 
+A1 = Enclos("Terrarium", "sous_sol", "1234")
 
+l1 = Reptile("A1111", "gecko", "Omnivore", "reptile", A1, "10", 35, False)
 
+l2 = Reptile()
 
+l2.deserialiser("test2")
 
+l1.serialiser("test2")
 
+#q1.serialiser("test2")
+#q1.serialiser("test2")
+
+l3 = Reptile()
+
+l3.deserialiser("test2")
 
 
 

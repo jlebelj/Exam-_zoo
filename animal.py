@@ -7,7 +7,7 @@
 ###  Description du fichier: Classe Animal
 ####################################################################################
 
-
+from enclos import *
 
 
 
