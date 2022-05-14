@@ -283,7 +283,7 @@ class Ui_Dialog(object):
         self.BT_serialiser_r.setText(_translate("Dialog", "Serialiser"))
         self.BT_deserialiser_r.setText(_translate("Dialog", "Deserialiser"))
         self.MS_e_nb_dent_r.setText(_translate("Dialog", "<html><head/><body><p><span style=\" color:#ff0000;\">Le nombre doit etre superieure a 0 et entier</span></p></body></html>"))
-        self.MS_e_num_format_r.setText(_translate("Dialog", "<html><head/><body><p><span style=\" color:#ff0000;\">Voici le format a utiliser: 1234</span></p></body></html>"))
+        self.MS_e_num_format_r.setText(_translate("Dialog", "<html><head/><body><p><span style=\" color:#ff0000;\">Voici le format a utiliser: a1234</span></p></body></html>"))
         self.MS_e_nom_lenght_r.setText(_translate("Dialog", "<html><head/><body><p><span style=\" color:#ff0000;\">Le nom doit comporter moins de 25 lettres </span></p></body></html>"))
         self.MS_e_nom_format_r.setText(_translate("Dialog", "<html><head/><body><p><span style=\" color:#ff0000;\">Le nom est compose de lettre seulement </span></p></body></html>"))
         self.MS_e_temperature_sup_r.setText(_translate("Dialog", "<html><head/><body><p><span style=\" color:#ff0000;\">La temperature doit etre superieure a 0</span></p></body></html>"))

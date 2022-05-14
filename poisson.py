@@ -55,11 +55,11 @@ class Poisson(Animal):
         """
         output = (f"Nom de l'animal: {self.Nom_animal}\n")
         output += (f"Numero de l'animal: {self.Num_animal}\n")
-        output += (f"Prenom: {self.Type_animal}\n")
+        output += (f"Type d'animal: {self.Type_animal}\n")
         output += (f"Type d'alimentation: {self.Type_alimentation}\n")
-        output += (f"{self.enclos.__str__()}\n")
         output += (f"Longueur du poisson: {self.__longueur}\n")
         output += (f"Type d'eau: {self.Type_eau}")
+        output += (f"{self.enclos.__str__()}\n")
         return output
 
 
@@ -101,30 +101,7 @@ class Poisson(Animal):
                     # faire for loop parcourant liste enclos reperant lobjet enclos associer au num
 
                 except:
-                    print("1")
+                    return 1
         except:
-            print("2")
-
-
-A1 = Enclos("Terrarium", "sous_sol", "1234")
-q1 = Poisson("A1234", "gecko", "Omnivore", "reptile", A1, "10", "sale")
-
-
-
-#q1.serialiser("test2")
-
-
-
-l2 = Poisson()
-
-l2.deserialiser("test2")
-#print(l2)
-
-
-
-
-
-
-
-
+            return 2
 

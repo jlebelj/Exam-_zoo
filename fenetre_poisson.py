@@ -8,7 +8,7 @@ import interface_poisson
 # importation classe
 from poisson import *
 from animal import *
-from liste_globale import lst_animal
+from liste_globale import lst_animal_globale
 # definition
 
 
@@ -22,7 +22,7 @@ def verifier_animal_liste(p_num):
             :param p_num:  le numéro d'étudiant
             :return: True si l'étudiant est trouvé dans la liste des étudiants et False sinon
     """
-    for elt in lst_animal:
+    for elt in lst_animal_globale:
         if elt.Num_animal == p_num.capitalize():
             return True
     return False
@@ -46,9 +46,10 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
         self.setupUi(self)
         self.setWindowTitle("poisson")
         cacher_labels_erreur_poisson(self)
-        for e in lst_animal:
+        for e in lst_animal_globale:
             if e.Type_animal == "poisson":
                 self.textBrowser_p.append(e.__str__())
+                self.textBrowser_p.append("")
 
     @pyqtSlot()
     def on_BT_quitter_p_clicked(self):

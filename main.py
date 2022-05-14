@@ -21,29 +21,21 @@ from PyQt5.QtCore import QDate, pyqtSlot
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 # importer les interfaces graphiques
 import interface_graphique_zoo
+import interface_liste_animaux
 # importer classe
 from liste_globale import lst_enclos
-from liste_globale import lst_animal
+from liste_globale import lst_animal_globale
 from fenetre_reptile import *
 from fenetre_poisson import *
 from fenetre_enclos import *
+from fenetre_liste import *
 from reptile import *
+from poisson import *
 #from
 #Importer la classe Etudiant
 #from Etudiant import *
 
-###  DÉCLARATIONS ET INITIALISATIONS - Portée globale  ###
-##########################################################
-
-
-A2 = Enclos("Aquarium", "premier etage", "4321", )
-A1 = Enclos("Terrarium", "sous_sol", "1234", [Reptile("b1234", "gecko", "Omnivore", "reptile", A2, "23", 30, True)])
-p1 = Poisson("A1234", "brochet", "carnivore", "poisson", A1, "10", "sale")
-r1 = Reptile("b1234", "gecko", "Omnivore", "reptile", A2, "23", 30, True)
-lst_animal.append(r1)
-lst_animal.append(p1)
-lst_enclos.append(A1)
-lst_enclos.append(A2)
+#######################################################
 ###### DÉFINITIONS DE LA CLASSE fenetrePrincipale ######
 ########################################################
 class Fenetre_principale(QtWidgets.QMainWindow, interface_graphique_zoo.Ui_MainWindow):
@@ -100,6 +92,19 @@ class Fenetre_principale(QtWidgets.QMainWindow, interface_graphique_zoo.Ui_MainW
         dialog.show()
         reply = dialog.exec_()
 
+    @pyqtSlot()
+    # Bouton poisson pour ouvrir pop up poisson
+    def on_BT_afficher_animaux_clicked(self):
+        # Instancier une boite de dialogue FenetreListview
+        dialog = Fenetre_liste()  # nom de la classe du pop up
+        # Préparer la listview
+        # Afficher la boite de dialogue
+        dialog.show()
+        reply = dialog.exec_()
+
+    @pyqtSlot()
+    def on_BT_quitter_m_clicked(self):
+        self.close()
 
 
 

@@ -69,10 +69,10 @@ class Reptile(Animal):
         output += (f"Numero de l'animal: {self.Num_animal}\n")
         output += (f"Type d'animal: {self.Type_animal}\n")
         output += (f"Type d'alimentation: {self.Type_alimentation}\n")
-        output += (f"{self.enclos.__str__()}\n")
         output += (f"Nombre de dents: {self.__nb_dent}\n")
         output += (f"emperature moyenne corporelle: {self.__temperature_moyenne}\n")
         output += (f"Reptile venimeux?: {self.Venimeux}\n")
+        output += (f"{self.enclos.__str__()}\n")
         return output
 
     #####          Autres MÉTHODES         #####
@@ -102,9 +102,8 @@ class Reptile(Animal):
             Méthode permttant de désérialiser un objet de la classe Reptile
             ::param p_fichier : Le nom du fichier qui contient l'objet sérialisé
                 """
-
         try:
-            with open(p_fichier , "r") as fichier :
+            with open(p_fichier, "r") as fichier :
                 try:
                     self.__dict__ = json.load(fichier)
                     return 0
@@ -113,23 +112,23 @@ class Reptile(Animal):
         except:
             return 2
 
-A1 = Enclos("Terrarium", "sous_sol", "1234")
-
-l1 = Reptile("A1111", "gecko", "Omnivore", "reptile", A1, "10", 35, False)
-
-l2 = Reptile()
-
-l2.deserialiser("test2")
-
-l1.serialiser("test2")
-
-#q1.serialiser("test2")
-#q1.serialiser("test2")
-
-l3 = Reptile()
-
-l3.deserialiser("test2")
-
+# A1 = Enclos("Terrarium", "sous_sol", "1234")
+#
+# l1 = Reptile("A1111", "gecko", "Omnivore", "reptile", A1, "10", 35, False)
+#
+# l2 = Reptile()
+#
+# l2.deserialiser("test2")
+#
+# l1.serialiser("test2")
+#
+# #q1.serialiser("test2")
+# #q1.serialiser("test2")
+#
+# l3 = Reptile()
+#
+# l3.deserialiser("test2")
+# print(l3)
 
 
 

@@ -14,7 +14,7 @@ class Enclos:
 
     #      MÉTHODE CONSTRUCTEUR       #
     ###################################
-    def __init__(self, p_Type_enclos = "", p_emplacement = "", p_num_enclos = "", p_lst_animal = []):
+    def __init__(self, p_Type_enclos = "", p_emplacement = "", p_num_enclos = "", p_lst_animal = [] ):
         self.Type_enclos = p_Type_enclos
         self.Emplacement = p_emplacement
         self.__num_enclos = p_num_enclos
@@ -48,7 +48,11 @@ class Enclos:
         output = (f"Numero de l'enclos: {self.__num_enclos}\n")
         output += (f"Type de l'enclos: {self.Type_enclos}\n")
         output += (f"Emplacement de l'enclos: {self.Emplacement}\n")
-        output += (f"Animal/Animaux dans cet enclos: {self.lst_animal}")
+        chaine = ""
+        for x in self.lst_animal:
+            print(self.lst_animal)
+            chaine += "\n" + x.Num_animal+": " + x.Nom_animal
+        output += (f"Animal/Animaux dans cet enclos: {chaine}")
         return output
 
     def format_serialiser(self):

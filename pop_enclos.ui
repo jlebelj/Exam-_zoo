@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>725</width>
-    <height>566</height>
+    <height>434</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,8 +19,8 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>130</y>
+     <x>260</x>
+     <y>140</y>
      <width>241</width>
      <height>31</height>
     </rect>
@@ -33,14 +33,14 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Voici le format a utiliser: a1234&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Voici le format a utiliser: 1234&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QLabel" name="l_num_r">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>40</y>
+     <x>260</x>
+     <y>50</y>
      <width>211</width>
      <height>21</height>
     </rect>
@@ -56,11 +56,11 @@
     <string>Numero de l'enclos</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="line_num_r">
+  <widget class="QLineEdit" name="line_num_e">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>70</y>
+     <x>260</x>
+     <y>80</y>
      <width>181</width>
      <height>41</height>
     </rect>
@@ -77,18 +77,38 @@
   <widget class="QComboBox" name="CB_type_enclos_e">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>200</y>
+     <x>520</x>
+     <y>80</y>
      <width>181</width>
      <height>41</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string>Terrarium</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Aquarium</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Enclos a ciel ouvert</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Voliere</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="l_enclos_e">
    <property name="geometry">
     <rect>
-     <x>480</x>
-     <y>170</y>
+     <x>520</x>
+     <y>50</y>
      <width>181</width>
      <height>21</height>
     </rect>
@@ -110,8 +130,8 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>110</y>
+     <x>260</x>
+     <y>120</y>
      <width>201</width>
      <height>31</height>
     </rect>
@@ -130,8 +150,8 @@
   <widget class="QLabel" name="l_num_r_2">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>10</y>
+     <x>320</x>
+     <y>0</y>
      <width>81</width>
      <height>31</height>
     </rect>
@@ -147,52 +167,37 @@
     <string>Enclos</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="CB_lst_animaux_e">
-   <property name="geometry">
-    <rect>
-     <x>480</x>
-     <y>90</y>
-     <width>181</width>
-     <height>41</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QLabel" name="l_enclos_r_2">
-   <property name="geometry">
-    <rect>
-     <x>440</x>
-     <y>40</y>
-     <width>281</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Liste des animaux a ajouter</string>
-   </property>
-  </widget>
   <widget class="QComboBox" name="CB_emplacement_e">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>200</y>
+     <y>80</y>
      <width>181</width>
      <height>41</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string>sous-sol</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>premier etage</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>deuxieme etage</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="l_emplacement_e">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>170</y>
-     <width>261</width>
+     <y>50</y>
+     <width>141</width>
      <height>21</height>
     </rect>
    </property>
@@ -204,34 +209,14 @@
     </font>
    </property>
    <property name="text">
-    <string>Emplacement de l'enclos</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="l_enclos_r_4">
-   <property name="geometry">
-    <rect>
-     <x>520</x>
-     <y>60</y>
-     <width>101</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string> a l'enclos</string>
+    <string>Emplacement </string>
    </property>
   </widget>
   <widget class="QPushButton" name="BT_modifier_e">
    <property name="geometry">
     <rect>
      <x>550</x>
-     <y>370</y>
+     <y>260</y>
      <width>171</width>
      <height>31</height>
     </rect>
@@ -251,7 +236,7 @@
    <property name="geometry">
     <rect>
      <x>550</x>
-     <y>410</y>
+     <y>300</y>
      <width>171</width>
      <height>31</height>
     </rect>
@@ -271,17 +256,17 @@
    <property name="geometry">
     <rect>
      <x>0</x>
-     <y>280</y>
+     <y>170</y>
      <width>541</width>
-     <height>281</height>
+     <height>261</height>
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="BT_ajouter_e">
+  <widget class="QPushButton" name="BT_ajouter_enclos">
    <property name="geometry">
     <rect>
      <x>550</x>
-     <y>330</y>
+     <y>220</y>
      <width>171</width>
      <height>31</height>
     </rect>
@@ -294,34 +279,14 @@
     </font>
    </property>
    <property name="text">
-    <string>Ajouter</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="BT_supprimer_e_2">
-   <property name="geometry">
-    <rect>
-     <x>550</x>
-     <y>450</y>
-     <width>171</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Afficher</string>
+    <string>Creer enclos</string>
    </property>
   </widget>
   <widget class="QPushButton" name="BT_quitter_e">
    <property name="geometry">
     <rect>
      <x>550</x>
-     <y>530</y>
+     <y>400</y>
      <width>171</width>
      <height>31</height>
     </rect>
