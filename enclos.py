@@ -14,7 +14,7 @@ class Enclos:
 
     #      MÉTHODE CONSTRUCTEUR       #
     ###################################
-    def __init__(self, p_Type_enclos = "", p_emplacement = "", p_num_enclos = "", p_lst_animal = [] ):
+    def __init__(self, p_Type_enclos = "", p_emplacement = "", p_num_enclos = "", p_lst_animal = []):
         self.Type_enclos = p_Type_enclos
         self.Emplacement = p_emplacement
         self.__num_enclos = p_num_enclos

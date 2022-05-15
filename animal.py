@@ -58,7 +58,7 @@ class Animal:
         """
         Mutateur de l'attribut privé __nom_animal
         """
-        if len(p_nom) <= 25 and p_nom.isalpha():
+        if p_nom.isalpha() and len(p_nom) <= 25:
             self.__nom_animal = p_nom
     Nom_animal = property(get_nom_animal, set_nom_animal)
 

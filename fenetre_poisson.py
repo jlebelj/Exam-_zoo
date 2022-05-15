@@ -9,6 +9,7 @@ import interface_poisson
 from poisson import *
 from animal import *
 from liste_globale import lst_animal_globale
+from liste_globale import lst_enclos
 # definition
 
 
@@ -27,6 +28,16 @@ def verifier_animal_liste(p_num):
             return True
     return False
 
+def verifier_animal_est_poisson(p_type):
+    """
+        Vérifie si le type d'animal choisit est le bon dependemment du pop up choisit
+            :param p_num:  le numéro d'étudiant
+            :return: True si l'étudiant est trouvé dans la liste des étudiants et False sinon
+    """
+    if p_type == "Poisson":
+            return True
+    return False
+
 def cacher_labels_erreur_poisson(objet):
     """
     Cacher les différents labels d'erreur dans pop up poisson
@@ -36,6 +47,7 @@ def cacher_labels_erreur_poisson(objet):
     objet.MS_e_nom_lenght_p.setVisible(False)
     objet.MS_e_num_existant_p.setVisible(False)
     objet.MS_e_longueur_sup_p.setVisible(False)
+    objet.MS_e_type_p.setVisible(False)
 
 ######################################################
 ###### DÉFINITIONS DE LA CLASSE Fenetrelistview ######
@@ -50,10 +62,70 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
             if e.Type_animal == "poisson":
                 self.textBrowser_p.append(e.__str__())
                 self.textBrowser_p.append("")
+        for enc in lst_enclos:
+            self.CB_enclos_p.addItem(enc.Num_enclos)
 
     @pyqtSlot()
     def on_BT_quitter_p_clicked(self):
         self.close()
 
-
+    @pyqtSlot()
+    # Bouton Creer un enclos
+    def on_BT_ajouter_p_clicked(self):
+        """
+        Gestionnaire d'évènement pour le bouton Creer des enclos
+        """
+        # Instancier un objet Enclos
+        po = Poisson()
+        # Entrée de donnée pour les attributs de l'objet Enclos
+        po.Num_animal = self.line_num_p.text().capitalize()
+        po.Nom_animal = self.line_nom_p.text()
+        po.Longueur_poisson = self.line_longueur_p.text()
+        po.Type_animal = self.CB_type_animal_p.currentText()
+        po.Type_eau = self.CB_eau_p.currentText()
+        po.Type_alimentation = self.CB_alimentation_p.currentText()
+        po.enclos = self.CB_enclos_p.currentText()
+        # True/False qui nous informe si num d'enclos existe ou pas dans liste des enclos
+        verifier_animal = verifier_animal_liste(po.Num_animal)
+        verifier_type_animal = verifier_animal_est_poisson(po.Type_animal)
+        # Si num d'enclos valide mais existe déjà dans la liste enclos, on ajoute pas
+        if verifier_animal is True:
+            self.line_num_e.clear()
+            self.MS_e_num_existant_p.setVisible(True)
+        if verifier_type_animal is False:
+            self.MS_e_type_p.setVisible(True)
+        if po.Num_animal == "":  # Si le num d'enclos est invalide, effacer lineEdit et afficher message d'erreur
+            self.line_num_p.clear()
+            self.MS_e_num_format_p.setVisible(True)
+        if po.Nom_animal == "":
+            self.MS_e_nom_format_p.setVisible(True)
+            self.MS_e_nom_lenght_p.setVisible(True)
+            self.line_nom_p.clear()
+        if po.Longueur_poisson == 0:
+            self.line_longueur_p.clear()
+            self.MS_e_longueur_sup_p.setVisible(True)
+            # si num est valide et n'existe pas deja on creer
+        if po.Num_animal != "" and po.Nom_animal != "" and po.Longueur_poisson != 0 and verifier_type_animal is True \
+                and verifier_animal is False:
+            lst_animal_globale.append(po)  # ajoute a la liste
+            for a in lst_animal_globale:
+                if a.Num_animal == po.Num_animal:
+                    for encl in lst_enclos:
+                        if encl.Num_enclos == po.enclos:
+                            a.enclos = encl
+            for enclo in lst_enclos:
+                if enclo.Num_enclos == self.CB_enclos_p.currentText():
+                    enclo.lst_animal.append(po)
+            for q in lst_enclos:
+            #self.textBrowser_p.clear()  # reinitialisation du text browser
+            for animaux in lst_animal_globale:
+                if animaux.Type_animal == "Poisson":
+                    self.textBrowser_p.append(animaux.__str__()) # Afffichage de tous les enclos dans la liste
+                    self.textBrowser_p.append("")# Spacer
+            self.line_num_p.clear()  # Réinitialiser  lineEdits num et combobox de l'emplacement et du type d'enclos
+            self.CB_eau_p.setCurrentText("Salé")
+            self.CB_alimentation_p.setCurrentText("sous-sol")
+            self.line_nom_p.clear()
+            self.line_longueur_p.clear()
+            self.CB_type_animal_p.setCurrentText("Poisson")
 

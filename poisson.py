@@ -24,7 +24,7 @@ class Poisson(Animal):
     #      MÉTHODE CONSTRUCTEUR       #
     ###################################
     def __init__(self, p_num_animal = "", p_nom_animal = "", p_Type_alimentation = "", p_Type_animal = "",
-                p_enclos = Enclos(), p_longueur = "", p_Type_eau = ""):
+                p_enclos = Enclos(), p_longueur = 0, p_Type_eau = ""):
         Animal.__init__(self, p_num_animal, p_nom_animal, p_Type_alimentation, p_Type_animal, p_enclos)
         self.__longueur = p_longueur
         self.Type_eau = p_Type_eau
@@ -41,8 +41,11 @@ class Poisson(Animal):
         """
         Mutateur de l'attribut privé __longueur
         """
-        if p_longueur.isnumeric() and p_longueur > 0:
-            self.__longueur = p_longueur
+        if p_longueur.isnumeric():
+            p_longueur = int(p_longueur)
+            if p_longueur > 0:
+                self.__longueur = p_longueur
+    Longueur_poisson = property(get_longueur, set_longueur)
 
 
     #####  MÉTHODES SPÉCIALES OU MAGIQUES  #####

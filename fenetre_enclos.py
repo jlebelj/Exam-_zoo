@@ -27,6 +27,7 @@ def cacher_labels_erreur_poisson(objet):
     """
     objet.MS_e_num_format_e.setVisible(False)
     objet.MS_e_num_existant_e.setVisible(False)
+    objet.MS_e_num_inex.setVisible(False)
 
 ######################################################
 ###### DÉFINITIONS DE LA CLASSE Fenetrelistview ######
@@ -101,7 +102,7 @@ class Fenetre_enclos(QtWidgets.QDialog, interface_enclos.Ui_Dialog):
             self.MS_e_num_format_e.setVisible(True)
         if verifier_enclos is False:
             self.line_num_e.clear()
-            # ms erreur num inexsistant #################
+            self.MS_e_num_inex.setVisible(True)
         if verifier_enclos is True and en.Num_enclos != "": # si num valide et retrouve dans liste, on modifie
             for enclos in lst_enclos:
                 if enclos.Num_enclos == en.Num_enclos: # reperer bon objet grace au numero unique de chaque objet enclos
@@ -138,7 +139,7 @@ class Fenetre_enclos(QtWidgets.QDialog, interface_enclos.Ui_Dialog):
             self.MS_e_num_format_e.setVisible(True)
         if verifier_enclos is False: # si num enclos est introuvable
             self.line_num_e.clear()
-            # ms erreur num inexsistant #################
+            self.MS_e_num_inex.setVisible(True)
         if verifier_enclos is True:  # si num retrouve dans liste, on modifie
             for enclos in lst_enclos:
                 if enclos.Num_enclos == en.Num_enclos: # reperer bon objet grace au numero unique de chaque objet enclos

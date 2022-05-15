@@ -5,12 +5,12 @@ from reptile import *
 ###  instanciation objet pour test  ###
 #######################################
 A1 = Enclos("Terrarium", "sous_sol", "1234", [])
-r1 = Reptile("b1234", "gecko", "Omnivore", "reptile", A1, "23", 30, True)
+r1 = Reptile("B1234", "gecko", "Omnivore", "Reptile", A1, "23", 30, True)
 A1.lst_animal.append(r1)
 
 A2 = Enclos("Aquarium", "premier etage", "4321", [])
-p2 = Poisson("c1234", "achigan", "carnivore", "poisson", A2, "6", "douce")
-p1 = Poisson("A1234", "brochet", "carnivore", "poisson", A2, "10", "sale")
+p2 = Poisson("C1234", "achigan", "carnivore", "Poisson", A2, "6", "douce")
+p1 = Poisson("A1234", "brochet", "carnivore", "Poisson", A2, "10", "sale")
 
 A2.lst_animal.append(p1)
 A2.lst_animal.append(p2)

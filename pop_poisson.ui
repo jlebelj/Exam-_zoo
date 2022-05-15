@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>818</width>
-    <height>631</height>
+    <height>628</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -42,6 +42,21 @@
      <height>41</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string>Salé</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Douce</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Mélangée</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="l_enclo_p">
    <property name="geometry">
@@ -72,6 +87,16 @@
      <height>41</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string>Poisson</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Reptile</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="l_eau_p">
    <property name="geometry">
@@ -353,7 +378,7 @@
     </font>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Le nom est compose de lettre seulement &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Le nom est compose de lettres seulement &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
   <widget class="QComboBox" name="CB_alimentation_p">
@@ -365,6 +390,21 @@
      <height>41</height>
     </rect>
    </property>
+   <item>
+    <property name="text">
+     <string>Herbivore</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Carnivore</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Omnivore</string>
+    </property>
+   </item>
   </widget>
   <widget class="QLabel" name="MS_e_nom_lenght_p">
    <property name="enabled">
@@ -511,6 +551,29 @@
    </property>
    <property name="text">
     <string>Quitter</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="MS_e_type_p">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>220</y>
+     <width>171</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>10</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; color:#ff0000;&quot;&gt;Mauvais type d'animal&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>
