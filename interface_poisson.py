@@ -183,7 +183,7 @@ class Ui_Dialog(object):
         self.MS_e_num_existant_p.setFont(font)
         self.MS_e_num_existant_p.setObjectName("MS_e_num_existant_p")
         self.textBrowser_p = QtWidgets.QTextBrowser(Dialog)
-        self.textBrowser_p.setGeometry(QtCore.QRect(20, 340, 561, 281))
+        self.textBrowser_p.setGeometry(QtCore.QRect(20, 340, 591, 281))
         self.textBrowser_p.setObjectName("textBrowser_p")
         self.BT_supprimer_p = QtWidgets.QPushButton(Dialog)
         self.BT_supprimer_p.setGeometry(QtCore.QRect(630, 460, 171, 31))
