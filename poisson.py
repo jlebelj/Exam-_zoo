@@ -61,7 +61,7 @@ class Poisson(Animal):
         output += (f"Type d'animal: {self.Type_animal}\n")
         output += (f"Type d'alimentation: {self.Type_alimentation}\n")
         output += (f"Longueur du poisson: {self.__longueur}\n")
-        output += (f"Type d'eau: {self.Type_eau}")
+        output += (f"Type d'eau: {self.Type_eau}\n")
         output += (f"{self.enclos.__str__()}\n")
         return output
 

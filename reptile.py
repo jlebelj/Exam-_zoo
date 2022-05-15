@@ -24,7 +24,7 @@ class Reptile(Animal):
     #      MÉTHODE CONSTRUCTEUR       #
     ###################################
     def __init__(self, p_num_animal = "", p_nom_animal = "", p_Type_alimentation = "", p_Type_animal = "",
-                p_enclos = Enclos(), p_nb_dent = "", p_temperature_moyenne = 0, p_Venimeux = False):
+                p_enclos = Enclos(), p_nb_dent = 0, p_temperature_moyenne = 0, p_Venimeux = False):
         Animal.__init__(self, p_num_animal, p_nom_animal, p_Type_alimentation, p_Type_animal, p_enclos)
         self.__nb_dent = p_nb_dent
         self.__temperature_moyenne = p_temperature_moyenne
@@ -43,8 +43,10 @@ class Reptile(Animal):
         """
         Mutateur de l'attribut privé __nb_dent
         """
-        if p_nb.isnumeric() and p_nb > 0:
-            self.__nb_dent = p_nb
+        if p_nb.isnumeric():
+            p_nb = int(p_nb)
+            if p_nb > 0:
+                self.__nb_dent = p_nb
     Nb_dent = property(get_nb_dent, set_nb_dent)
 
     def get_temperature_moyenne(self):
@@ -53,7 +55,10 @@ class Reptile(Animal):
         """
         return self.__temperature_moyenne
     def set_temperature_moyenne(self, p_temp):
-        if p_temp.isnumeric() and p_temp > 0:
+        if p_temp.isnumeric():
+            p_temp = int(p_temp)
+            if p_temp > 0:
+                self.__temperature_moyenne = p_temp
             self.__temperature_moyenne = p_temp
     Temperature_moyenne = property(get_temperature_moyenne, set_temperature_moyenne)
 

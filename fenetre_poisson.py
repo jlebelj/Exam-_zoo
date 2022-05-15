@@ -2,12 +2,10 @@
 from PyQt5 import QtWidgets
 # Pour le gestionnaire d'événement
 from PyQt5.QtCore import pyqtSlot
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
 # Importer la boite de dialogue
 import interface_poisson
 # importation classe
 from poisson import *
-from animal import *
 from liste_globale import lst_animal_globale
 from liste_globale import lst_enclos
 # definition
@@ -31,7 +29,7 @@ def verifier_animal_liste(p_num):
 def verifier_animal_est_poisson(p_type):
     """
         Vérifie si le type d'animal choisit est le bon dependemment du pop up choisit
-            :param p_num:  le numéro d'étudiant
+            :param p_type:  le numéro d'étudiant
             :return: True si l'étudiant est trouvé dans la liste des étudiants et False sinon
     """
     if p_type == "Poisson":
@@ -42,12 +40,12 @@ def cacher_labels_erreur_poisson(objet):
     """
     Cacher les différents labels d'erreur dans pop up poisson
     """
+    objet.MS_e_num_inex_p.setVisible(False)
     objet.MS_e_num_format_p.setVisible(False)
     objet.MS_e_nom_format_p.setVisible(False)
     objet.MS_e_nom_lenght_p.setVisible(False)
     objet.MS_e_num_existant_p.setVisible(False)
     objet.MS_e_longueur_sup_p.setVisible(False)
-    objet.MS_e_type_p.setVisible(False)
 
 ######################################################
 ###### DÉFINITIONS DE LA CLASSE Fenetrelistview ######
@@ -56,7 +54,7 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
     def __init__(self, parent=None):
         super(Fenetre_poisson, self).__init__(parent)
         self.setupUi(self)
-        self.setWindowTitle("poisson")
+        self.setWindowTitle("Poisson")
         cacher_labels_erreur_poisson(self)
         for e in lst_animal_globale:
             if e.Type_animal == "Poisson":
@@ -90,7 +88,7 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
         verifier_type_animal = verifier_animal_est_poisson(po.Type_animal)
         # Si num d'enclos valide mais existe déjà dans la liste enclos, on ajoute pas
         if verifier_animal is True:
-            self.line_num_e.clear()
+            self.line_num_p.clear()
             self.MS_e_num_existant_p.setVisible(True)
         if verifier_type_animal is False:
             self.MS_e_type_p.setVisible(True)
@@ -124,7 +122,7 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
                     self.textBrowser_p.append("")# Spacer
             self.line_num_p.clear()  # Réinitialiser  lineEdits num et combobox de l'emplacement et du type d'enclos
             self.CB_eau_p.setCurrentText("Salé")
-            self.CB_alimentation_p.setCurrentText("sous-sol")
+            self.CB_alimentation_p.setCurrentText("Herbivore")
             self.line_nom_p.clear()
             self.line_longueur_p.clear()
             self.CB_type_animal_p.setCurrentText("Poisson")
@@ -150,8 +148,8 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
         verifier_type_animal = verifier_animal_est_poisson(po.Type_animal)
         # Si num d'enclos valide mais existe pas dans la liste enclos, message d'erreur
         if verifier_animal is False:
-            self.line_num_e.clear()
-            self.MS_e_num_existant_p.setVisible(True)
+            self.line_num_p.clear()
+            self.MS_e_num_inex_p.setVisible(True)
         if verifier_type_animal is False:
             self.MS_e_type_p.setVisible(True)
         if po.Num_animal == "":  # Si le num est invalide, effacer lineEdit et afficher message d'erreur
@@ -190,7 +188,7 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
                     self.textBrowser_p.append("")  # Spacer
             self.line_num_p.clear()  # Réinitialiser lineEdits num et combobox de pop up poisson
             self.CB_eau_p.setCurrentText("Salé")
-            self.CB_alimentation_p.setCurrentText("sous-sol")
+            self.CB_alimentation_p.setCurrentText("Herbivore")
             self.line_nom_p.clear()
             self.line_longueur_p.clear()
             self.CB_type_animal_p.setCurrentText("Poisson")
@@ -211,8 +209,8 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
         verifier_type_animal = verifier_animal_est_poisson(po.Type_animal)
         # Si num d'enclos valide mais existe pas dans la liste enclos, message d'erreur
         if verifier_animal is False:
-            self.line_num_e.clear()
-            self.MS_e_num_existant_p.setVisible(True)
+            self.line_num_p.clear()
+            self.MS_e_num_inex_p.setVisible(True)
         if verifier_type_animal is False:
             self.MS_e_type_p.setVisible(True)
         if po.Num_animal == "":  # Si le num est invalide, effacer lineEdit et afficher message d'erreur
@@ -232,7 +230,7 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
                     self.textBrowser_p.append("")  # Spacer
             self.line_num_p.clear()  # Réinitialiser lineEdits num et combobox de pop up poisson
             self.CB_eau_p.setCurrentText("Salé")
-            self.CB_alimentation_p.setCurrentText("sous-sol")
+            self.CB_alimentation_p.setCurrentText("Herbivore")
             self.line_nom_p.clear()
             self.line_longueur_p.clear()
             self.CB_type_animal_p.setCurrentText("Poisson")
