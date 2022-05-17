@@ -31,6 +31,7 @@ class Animal:
         self.enclos = p_enclos
 
 
+
     ####   Propriétés, accesseurs et mutateurs    ####
     ##################################################
 

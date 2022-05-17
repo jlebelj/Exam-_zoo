@@ -194,7 +194,7 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
             self.CB_type_animal_p.setCurrentText("Poisson")
 
     @pyqtSlot()
-    # Bouton modifier pour Poisson
+    # Bouton supprimer pour Poisson
     def on_BT_supprimer_p_clicked(self):
         """
         Gestionnaire d'évènement pour le bouton ajouter un poisson
@@ -234,3 +234,51 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
             self.line_nom_p.clear()
             self.line_longueur_p.clear()
             self.CB_type_animal_p.setCurrentText("Poisson")
+
+    @pyqtSlot()
+    # Bouton supprimer pour Poisson
+    def on_BT_serialiser_p_clicked(self):
+        # Cacher les labels qui affichent les différentes erreurs
+        # Instancier un objet Eudiant
+        po = Poisson()
+        # Entrée de donnée pour les attributs de l'objet Etudiant
+        po.Num_animal = self.line_num_p.text().capitalize()
+        po.Nom_animal = self.line_nom_p.text()
+        po.Longueur_poisson = self.line_longueur_p.text()
+        po.Type_animal = self.CB_type_animal_p.currentText()
+        po.Type_eau = self.CB_eau_p.currentText()
+        po.Type_alimentation = self.CB_alimentation_p.currentText()
+        po.enclos = self.CB_enclos_p.currentText()
+        # Si le nom, le numéro et la date de naissance sont valides :
+        if po.Num_animal != "" and po.Nom_animal != "" and po.Longueur_poisson != 0:
+            # Séréaliser cet objet
+            result = po.serialiser(po.Nom_animal + "_" + po.Num_animal + ".json")
+            # Si la séréalisation a marché
+            if result == 0:
+                # Réinitialiser lineEdits num et combobox de pop up poisson
+                self.line_num_p.clear()
+                self.CB_eau_p.setCurrentText("Salé")
+                self.CB_alimentation_p.setCurrentText("Herbivore")
+                self.line_nom_p.clear()
+                self.line_longueur_p.clear()
+                self.CB_type_animal_p.setCurrentText("Poisson")
+            # sinon afficher des messages d'erreur
+            elif result == 1:
+                # Afficher le message d'erreur d'écriture dans le fichier
+                self.MS_e_serialiser_p.setText("<font color=\"#ff0000\">Erreur d'écriture dans le fichier</font>")
+            else:
+                # Afficher le message d'erreur d'ouverture du fichier
+                self.MS_e_serialiser_p.setText("<font color=\"#ff0000\">Erreur d'ouverture du fichier</font>")
+        # si le nom est invalide, afficher un message d'erreur
+        if po.Nom_animal == "":
+            self.lineEdit_nom.clear()
+            self.label_erreur_nom.setVisible(True)
+        # Si le numéro d'étudiant est invalide, effacer le lineEdit du numéro étudiant  et afficher un message d'erreur
+        if po.Num_animal == "":
+            self.lineEdit_numero.clear()
+            self.label_erreur_numero.setVisible(True)
+            # Si la date de naissance est invalide, afficher un message d'erreur
+        if po.Longueur_poisson == "":
+            self.line_longueur_p.clear()
+            self.label_erreur_date.setVisible(True)
+

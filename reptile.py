@@ -10,6 +10,7 @@
 # importation de classes
 from animal import  *
 from enclos import *
+from liste_globale import lst_enclos
 # instanciation
 
 # importation de fonction speciale
@@ -93,8 +94,10 @@ class Reptile(Animal):
         """
         try:
             with open(p_fichier, "w") as fichier:
-                self.__dict__["enclos"] = self.enclos.__dict__
                 try:
+                    for enc in lst_enclos:
+                        if enc.Num_enclos == self.__dict__["enclos"]:
+                            self.__dict__["enclos"] = enc.__dict__
                     json.dump(self.__dict__, fichier)
                     return 0
                 except:

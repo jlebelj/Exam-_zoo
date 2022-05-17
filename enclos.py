@@ -50,7 +50,6 @@ class Enclos:
         output += (f"Emplacement de l'enclos: {self.Emplacement}\n")
         chaine = ""
         for x in self.lst_animal:
-            print(self.lst_animal)
             chaine += "\n" + x.Num_animal+": " + x.Nom_animal
         output += (f"Animal/Animaux dans cet enclos: {chaine}")
         return output
