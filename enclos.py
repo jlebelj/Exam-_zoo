@@ -60,12 +60,3 @@ class Enclos:
         :return: Chaine utlilise dans le fichier json
         """
         return self.__dict__
-
-
-
-
-
-
-
-
-

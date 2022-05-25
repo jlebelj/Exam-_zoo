@@ -119,26 +119,3 @@ class Reptile(Animal):
                     return 1
         except:
             return 2
-
-# A1 = Enclos("Terrarium", "sous_sol", "1234")
-#
-# l1 = Reptile("A1111", "gecko", "Omnivore", "reptile", A1, "10", 35, False)
-#
-# l2 = Reptile()
-#
-# l2.deserialiser("test2")
-#
-# l1.serialiser("test2")
-#
-# #q1.serialiser("test2")
-# #q1.serialiser("test2")
-#
-# l3 = Reptile()
-#
-# l3.deserialiser("test2")
-# print(l3)
-
-
-
-
-

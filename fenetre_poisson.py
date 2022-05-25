@@ -83,7 +83,7 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
         po.Type_eau = self.CB_eau_p.currentText()
         po.Type_alimentation = self.CB_alimentation_p.currentText()
         po.enclos = self.CB_enclos_p.currentText()
-        # True/False qui nous informe si num d'enclos existe ou pas dans liste des enclos + si type
+        # True/False qui nous informe si num existe ou pas dans liste + si type
         verifier_animal = verifier_animal_liste(po.Num_animal)
         verifier_type_animal = verifier_animal_est_poisson(po.Type_animal)
         # Si num d'enclos valide mais existe déjà dans la liste enclos, on ajoute pas
@@ -118,9 +118,9 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
             self.textBrowser_p.clear()
             for animaux in lst_animal_globale:
                 if animaux.Type_animal == "Poisson":
-                    self.textBrowser_p.append(animaux.__str__()) # Afffichage de tous les enclos dans la liste
+                    self.textBrowser_p.append(animaux.__str__()) # Affichage de tous les poissons dans la liste
                     self.textBrowser_p.append("")# Spacer
-            self.line_num_p.clear()  # Réinitialiser  lineEdits num et combobox de l'emplacement et du type d'enclos
+            self.line_num_p.clear()  # Réinitialiser lineEdits num et combobox de l'emplacement et du type d'enclos
             self.CB_eau_p.setCurrentText("Salé")
             self.CB_alimentation_p.setCurrentText("Herbivore")
             self.line_nom_p.clear()
@@ -207,7 +207,7 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
         # True/False qui nous informe si num d'enclos existe ou pas dans liste des enclos + si type st == poisson
         verifier_animal = verifier_animal_liste(po.Num_animal)
         verifier_type_animal = verifier_animal_est_poisson(po.Type_animal)
-        # Si num d'enclos valide mais existe pas dans la liste enclos, message d'erreur
+        # Si num valide mais existe pas dans liste, message d'erreur
         if verifier_animal is False:
             self.line_num_p.clear()
             self.MS_e_num_inex_p.setVisible(True)
@@ -239,9 +239,9 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
     # Bouton supprimer pour Poisson
     def on_BT_serialiser_p_clicked(self):
         # Cacher les labels qui affichent les différentes erreurs
-        # Instancier un objet Eudiant
+        # Instancier un objet reptile
         po = Poisson()
-        # Entrée de donnée pour les attributs de l'objet Etudiant
+        # Entrée de donnée pour les attributs de l'objet poisson
         po.Num_animal = self.line_num_p.text().capitalize()
         po.Nom_animal = self.line_nom_p.text()
         po.Longueur_poisson = self.line_longueur_p.text()
@@ -249,7 +249,7 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
         po.Type_eau = self.CB_eau_p.currentText()
         po.Type_alimentation = self.CB_alimentation_p.currentText()
         po.enclos = self.CB_enclos_p.currentText()
-        # Si le nom, le numéro et la date de naissance sont valides :
+        # Si tout est valide on serialise
         if po.Num_animal != "" and po.Nom_animal != "" and po.Longueur_poisson != 0:
             # Séréaliser cet objet
             result = po.serialiser(po.Nom_animal + "_" + po.Num_animal + ".json")
@@ -273,11 +273,11 @@ class Fenetre_poisson(QtWidgets.QDialog, interface_poisson.Ui_Dialog):
         if po.Nom_animal == "":
             self.lineEdit_nom.clear()
             self.label_erreur_nom.setVisible(True)
-        # Si le numéro d'étudiant est invalide, effacer le lineEdit du numéro étudiant  et afficher un message d'erreur
+        # Si le donnees invalide, effacer le lineEdit et afficher un message d'erreur
         if po.Num_animal == "":
             self.lineEdit_numero.clear()
             self.label_erreur_numero.setVisible(True)
-            # Si la date de naissance est invalide, afficher un message d'erreur
+            # Si longueur pas bon clear lineedit et message erreur
         if po.Longueur_poisson == "":
             self.line_longueur_p.clear()
             self.label_erreur_date.setVisible(True)

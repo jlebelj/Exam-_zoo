@@ -72,14 +72,14 @@ class Fenetre_reptile(QtWidgets.QDialog, interface_reptile.Ui_Dialog):
         self.close()
 
     @pyqtSlot()
-    # Bouton ajouter pour Poisson
+    # Bouton ajouter pour reptile
     def on_BT_ajouter_r_clicked(self):
         """
-        Gestionnaire d'évènement pour le bouton ajouter un poisson
+        Gestionnaire d'évènement pour le bouton ajouter un reptile
         """
-        # Instancier un objet Enclos
+        # Instancier un objet reptile
         rep = Reptile()
-        # Entrée de donnée pour les attributs de l'objet Poisson
+        # Entrée de donnée pour les attributs de l'objet reptile
         rep.Num_animal = self.line_num_r.text().capitalize()
         rep.Nom_animal = self.line_nom_r.text()
         rep.Temperature_moyenne = self.line_temperature_r.text()
@@ -88,15 +88,14 @@ class Fenetre_reptile(QtWidgets.QDialog, interface_reptile.Ui_Dialog):
         rep.Type_alimentation = self.CB_alimentation_r.currentText()
         rep.enclos = self.CB_enclos_r.currentText()
         rep.Nb_dent = self.line_nb_dent_r.text()
-        # True/False qui nous informe si num d'enclos existe ou pas dans liste des enclos + si type
+        # True/False qui nous informe si num existe ou pas dans liste + si type
         verifier_animal = verifier_animal_liste(rep.Num_animal)
         verifier_type_animal = verifier_animal_est_reptile(rep.Type_animal)
-        # Si num d'enclos valide mais existe déjà dans la liste enclos, on ajoute pas
+        # Si num valide mais existe déjà dans la liste, on ajoute pas
         if verifier_animal is True:
             self.line_num_e.clear()
             self.MS_e_num_existant_r.setVisible(True)
-            # self.MS_e_type_p.setVisible(True)
-        if rep.Num_animal == "":  # Si le num d'enclos est invalide, effacer lineEdit et afficher message d'erreur
+        if rep.Num_animal == "":  # Si le num est invalide, effacer lineEdit et afficher message d'erreur
             self.line_num_r.clear()
             self.MS_e_num_format_r.setVisible(True)
         if rep.Nom_animal == "":
@@ -113,22 +112,22 @@ class Fenetre_reptile(QtWidgets.QDialog, interface_reptile.Ui_Dialog):
             # si num est valide et n'existe pas deja on creer
         if rep.Num_animal != "" and rep.Nom_animal != "" and rep.Nb_dent != 0 and rep.Temperature_moyenne != 0 \
                 and verifier_type_animal is True and verifier_animal is False:
-            lst_animal_globale.append(rep)  # ajoute a la liste
+            lst_animal_globale.append(rep)  # ajoute a la liste globale d'animaux
             for a in lst_animal_globale:
                 if a.Num_animal == rep.Num_animal:
                     for encl in lst_enclos:
-                        if encl.Num_enclos == rep.enclos:
+                        if encl.Num_enclos == rep.enclos: # association de objet enclos a attribut enclos
                             a.enclos = encl
             for enclo in lst_enclos:
                 if enclo.Num_enclos == self.CB_enclos_r.currentText():
-                    enclo.lst_animal.append(rep)
+                    enclo.lst_animal.append(rep) # ajouter animal a liste d'animaux
             # self.textBrowser_p.clear()  # reinitialisation du text browser
             self.textBrowser_r.clear()
             for animaux in lst_animal_globale:
                 if animaux.Type_animal == "Reptile":
-                    self.textBrowser_r.append(animaux.__str__())  # Afffichage de tous les enclos dans la liste
+                    self.textBrowser_r.append(animaux.__str__())  # Afffichage de tous les reptiles dans la liste
                     self.textBrowser_r.append("")  # Spacer
-            self.line_num_r.clear()  # Réinitialiser  lineEdits num et combobox de l'emplacement et du type d'enclos
+            self.line_num_r.clear()  # Réinitialiser lineEdits num et combobox de l'emplacement et du type d'enclos
             self.CB_venimeux_r.setCurrentText("Oui")
             self.CB_alimentation_r.setCurrentText("Herbivore")
             self.line_nom_r.clear()
@@ -137,14 +136,14 @@ class Fenetre_reptile(QtWidgets.QDialog, interface_reptile.Ui_Dialog):
             self.CB_type_animal_r.setCurrentText("Poisson")
 
     @pyqtSlot()
-    # Bouton modifier pour Poisson
+    # Bouton modifier pour reptile
     def on_BT_modifier_r_clicked(self):
         """
-        Gestionnaire d'évènement pour le bouton ajouter un poisson
+        Gestionnaire d'évènement pour le bouton ajouter un reptile
         """
-        # Instancier un objet Enclos
+        # Instancier un objet reptile
         rep = Reptile()
-        # Entrée de donnée pour les attributs de l'objet Poisson
+        # Entrée de donnée pour les attributs de l'objet reptile
         rep.Num_animal = self.line_num_r.text().capitalize()
         rep.Nom_animal = self.line_nom_r.text()
         rep.Temperature_moyenne = self.line_temperature_r.text()
@@ -153,15 +152,14 @@ class Fenetre_reptile(QtWidgets.QDialog, interface_reptile.Ui_Dialog):
         rep.Type_alimentation = self.CB_alimentation_r.currentText()
         rep.enclos = self.CB_enclos_r.currentText()
         rep.Nb_dent = self.line_nb_dent_r.text()
-        # True/False qui nous informe si num d'enclos existe ou pas dans liste des enclos + si type st == poisson
+        # True/False qui nous informe si num existe ou pas dans liste + si type st == reptile
         verifier_animal = verifier_animal_liste(rep.Num_animal)
         verifier_type_animal = verifier_animal_est_reptile(rep.Type_animal)
-        # Si num d'enclos valide mais existe pas dans la liste enclos, message d'erreur
+        # Si num valide mais existe pas dans liste, message d'erreur
         if verifier_animal is False:
             self.line_num_r.clear()
             self.MS_e_num_inex_r.setVisible(True)
-            # self.MS_e_type_p.setVisible(True)
-        if rep.Num_animal == "":  # Si le num d'enclos est invalide, effacer lineEdit et afficher message d'erreur
+        if rep.Num_animal == "":  # Si le num est invalide, effacer lineEdit et afficher message d'erreur
             self.line_num_r.clear()
             self.MS_e_num_format_r.setVisible(True)
         if rep.Nom_animal == "":
@@ -181,11 +179,11 @@ class Fenetre_reptile(QtWidgets.QDialog, interface_reptile.Ui_Dialog):
             for a in lst_animal_globale:
                 if a.Num_animal == rep.Num_animal:  # identifie l'objet poisson correspondant au num entre
                     for enc in lst_enclos:
-                        if enc.Num_enclos == a.enclos.Num_enclos:  # identifie l'objet poisson correspondant a ancien poisson
+                        if enc.Num_enclos == a.enclos.Num_enclos:  # identifie l'objet reptile correspondant a ancien reptile
                             enc.lst_animal.remove(a)  # on supprime l'ancien reptile de son enclos
                     a.Nom_animal = self.line_nom_r.text()
                     a.Nb_dent = self.line_nb_dent_r.text()
-                    a.Type_animal = self.CB_type_animal_r.currentText() # associe nouvelle valeur au bon objet poisson
+                    a.Type_animal = self.CB_type_animal_r.currentText() # associe nouvelle valeur au bon objet reptile
                     a.Type_alimentation = self.CB_alimentation_r.currentText()
                     a.Temperature_moyenne = self.line_temperature_r.text()
                     a.Venimeux = self.CB_venimeux_r.currentText()
@@ -194,13 +192,13 @@ class Fenetre_reptile(QtWidgets.QDialog, interface_reptile.Ui_Dialog):
                             a.enclos = encl  # modifie l'enclos pour sa nouvelle valeur
             for enclo in lst_enclos:
                 if enclo.Num_enclos == self.CB_enclos_r.currentText():
-                    enclo.lst_animal.append(rep)  # ajoute poisson maintenant modifie dans la liste d'animaux de l'enclos
+                    enclo.lst_animal.append(rep)  # ajoute reptile maintenant modifie dans la liste d'animaux de l'enclos
             self.textBrowser_r.clear()  # reinitialisation du text browser
             for animaux in lst_animal_globale:
-                if animaux.Type_animal == "Reptile":  # affiche seulement poisson dans page poisson
-                    self.textBrowser_r.append(animaux.__str__())  # Afffichage de tous les poisons dans la liste
+                if animaux.Type_animal == "Reptile":  # affiche seulement poisson dans page reptile
+                    self.textBrowser_r.append(animaux.__str__())  # Affichage de tous les reptile dans la liste
                     self.textBrowser_r.append("")  # Spacer
-            self.line_num_r.clear()  # Réinitialiser  lineEdits num et combobox de l'emplacement et du type d'enclos
+            self.line_num_r.clear()  # Réinitialiser lineEdits num et combobox
             self.CB_venimeux_r.setCurrentText("Oui")
             self.CB_alimentation_r.setCurrentText("Herbivore")
             self.line_nom_r.clear()
@@ -210,20 +208,20 @@ class Fenetre_reptile(QtWidgets.QDialog, interface_reptile.Ui_Dialog):
 
 
     @pyqtSlot()
-    # Bouton modifier pour Poisson
+    # Bouton modifier pour reptile
     def on_BT_supprimer_r_clicked(self):
         """
-        Gestionnaire d'évènement pour le bouton ajouter un poisson
+        Gestionnaire d'évènement pour le bouton ajouter un reptile
         """
-        # Instancier un objet Enclos
+        # Instancier un objet reptile
         rep = Reptile()
-        # Entrée de donnée pour les attributs de l'objet Poisson
+        # Entrée de donnée pour les attributs de l'objet reptile
         rep.Num_animal = self.line_num_r.text().capitalize()
         rep.Type_animal = self.CB_type_animal_r.currentText()
-        # True/False qui nous informe si num d'enclos existe ou pas dans liste des enclos + si type st == poisson
+        # True/False qui nous informe si num existe ou pas dans liste + si type st == reptile
         verifier_animal = verifier_animal_liste(rep.Num_animal)
         verifier_type_animal = verifier_animal_est_reptile(rep.Type_animal)
-        # Si num d'enclos valide mais existe pas dans la liste enclos, message d'erreur
+        # Si num valide mais existe pas dans la liste, message d'erreur
         if rep.Num_animal == "":  # Si le num est invalide, effacer lineEdit et afficher message d'erreur
             self.line_num_r.clear()
             self.MS_e_num_format_r.setVisible(True)
@@ -232,17 +230,17 @@ class Fenetre_reptile(QtWidgets.QDialog, interface_reptile.Ui_Dialog):
             self.MS_e_num_inex_r.setVisible(True)
         if verifier_type_animal is True and verifier_animal is True:  # Si toutes valeurs sont correctes
             for a in lst_animal_globale:
-                if a.Num_animal == rep.Num_animal:  # identifie l'objet poisson correspondant au num entre
+                if a.Num_animal == rep.Num_animal:  # identifie l'objet reptile correspondant au num entre
                     lst_animal_globale.remove(a)
                     for enc in lst_enclos:
-                        if enc.Num_enclos == a.enclos.Num_enclos:  # identifie l'objet poisson correspondant au num entre
-                            enc.lst_animal.remove(a)  # on supprime poisson de son enclos
+                        if enc.Num_enclos == a.enclos.Num_enclos:  # identifie l'objet enclos correspondant au num entre
+                            enc.lst_animal.remove(a)  # on supprime reptile de son enclos
             self.textBrowser_r.clear()  # reinitialisation du text browser
             for animaux in lst_animal_globale:
-                if animaux.Type_animal == "Reptile":  # affiche seulement poisson dans page poisson
-                    self.textBrowser_r.append(animaux.__str__())  # Afffichage de tous les poisons dans la liste
+                if animaux.Type_animal == "Reptile":  # affiche seulement reptile dans page reptile
+                    self.textBrowser_r.append(animaux.__str__())  # Affichage de tous les poisons dans la liste
                     self.textBrowser_r.append("")  # Spacer
-            self.line_num_r.clear()  # Réinitialiser lineEdits num et combobox de l'emplacement et du type d'enclos
+            self.line_num_r.clear()  # Réinitialiser lineEdits num et combobox
             self.CB_venimeux_r.setCurrentText("Oui")
             self.CB_alimentation_r.setCurrentText("Herbivore")
             self.line_nom_r.clear()
@@ -251,12 +249,12 @@ class Fenetre_reptile(QtWidgets.QDialog, interface_reptile.Ui_Dialog):
             self.CB_type_animal_r.setCurrentText("Reptile")
 
     @pyqtSlot()
-    # Bouton supprimer pour Poisson
+    # Bouton supprimer pour reptile
     def on_BT_serialiser_r_clicked(self):
         # Cacher les labels qui affichent les différentes erreurs
-        # Instancier un objet Eudiant
+        # Instancier un objet reptile
         rep = Reptile()
-        # Entrée de donnée pour les attributs de l'objet Etudiant
+        # Entrée de donnée pour les attributs de l'objet reptile
         rep.Num_animal = self.line_num_r.text().capitalize()
         rep.Nom_animal = self.line_nom_r.text()
         rep.Temperature_moyenne = self.line_temperature_r.text()
@@ -265,13 +263,13 @@ class Fenetre_reptile(QtWidgets.QDialog, interface_reptile.Ui_Dialog):
         rep.Type_alimentation = self.CB_alimentation_r.currentText()
         rep.enclos = self.CB_enclos_r.currentText()
         rep.Nb_dent = self.line_nb_dent_r.text()
-        # Si le nom, le numéro et la date de naissance sont valides :
+        # Si donnees sont valides :
         if rep.Num_animal != "" and rep.Nom_animal != "" and rep.Temperature_moyenne != 0 and rep.Nb_dent != 0:
             # Séréaliser cet objet
             result = rep.serialiser(rep.Nom_animal + "_" + rep.Num_animal + ".json")
             # Si la séréalisation a marché
             if result == 0:
-                # Réinitialiser lineEdits num et combobox de l'emplacement et du type d'enclos
+                # Réinitialiser lineEdits num et combobox
                 self.line_num_r.clear()
                 self.CB_venimeux_r.setCurrentText("Oui")
                 self.CB_alimentation_r.setCurrentText("Herbivore")
@@ -288,13 +286,14 @@ class Fenetre_reptile(QtWidgets.QDialog, interface_reptile.Ui_Dialog):
                 self.MS_e_serialiser_r.setText("<font color=\"#ff0000\">Erreur d'ouverture du fichier</font>")
         # si le nom est invalide, afficher un message d'erreur
         if rep.Nom_animal == "":
-            self.lineEdit_nom.clear()
-            self.label_erreur_nom.setVisible(True)
-        # Si le numéro d'étudiant est invalide, effacer le lineEdit du numéro étudiant  et afficher un message d'erreur
+            self.line_nom_r.clear()
+            self.MS_e_nom_format_r.setVisible(True)
+            self.MS_e_nom_lenght_r.setVisible(True)
+        # Si le numéro d'étudiant est invalide, effacer le lineEdit et afficher un message d'erreur
         if rep.Num_animal == "":
-            self.lineEdit_numero.clear()
-            self.label_erreur_numero.setVisible(True)
-            # Si la date de naissance est invalide, afficher un message d'erreur
+            self.line_num_r.clear()
+            self.MS_e_num_format_r.setVisible(True)
+            # Si donnees invalide clear line edit, afficher un message d'erreur
         if rep.Nb_dent == 0:
             self.line_nb_dent_r.clear()
             self.MS_e_nb_dent_r.setVisible(True)

@@ -31,7 +31,7 @@ from fenetre_enclos import *
 from fenetre_liste import *
 from reptile import *
 from poisson import *
-# instanciation d'objet
+# instanciation d'objet pour des test
 A1 = Enclos("Terrarium", "sous_sol", "1234", [])
 r1 = Reptile("B1234", "gecko", "Omnivore", "Reptile", A1, 23, 30, "Non")
 r2 = Reptile("B4321", "dragon barbu", "Omnivore", "Reptile", A1, 35, 20, "Non")
@@ -124,22 +124,6 @@ class Fenetre_principale(QtWidgets.QMainWindow, interface_graphique_zoo.Ui_MainW
         self.close()
 
 
-
-# ajouter modifier supprimer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 def main():
     """
     Méthode main : point d'entré du programme.
@@ -156,3 +140,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

@@ -6,21 +6,13 @@
 ###  No Groupe: ?
 ###  Description du fichier: Classe Animal
 ####################################################################################
-
+# importation d'enclos
 from enclos import *
-
-
-
-
-
-
-
 
 class Animal:
     """
     Classe Animal (classe mere de poisson et reptile)
     """
-
     #      MÉTHODE CONSTRUCTEUR       #
     ###################################
     def __init__(self, p_num_animal = "", p_nom_animal = "", p_Type_alimentation = "", p_Type_animal = "", p_enclos = Enclos()):
@@ -29,7 +21,6 @@ class Animal:
         self.Type_alimentation = p_Type_alimentation
         self.Type_animal = p_Type_animal
         self.enclos = p_enclos
-
 
 
     ####   Propriétés, accesseurs et mutateurs    ####
@@ -63,7 +54,6 @@ class Animal:
             self.__nom_animal = p_nom
     Nom_animal = property(get_nom_animal, set_nom_animal)
 
-
     #####  MÉTHODES SPÉCIALES OU MAGIQUES  #####
     ############################################
 
@@ -80,16 +70,5 @@ class Animal:
         output += (f"Numero de l'enclos: {self.enclos.__str__()}\n")
         output += ("*************************\n")
         return output
-
-
-
-
-
-
-
-
-
-
-
 
 
